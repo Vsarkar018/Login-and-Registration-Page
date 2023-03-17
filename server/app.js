@@ -10,7 +10,6 @@ const errorHandler = require("./middleware/error-handler");
 const authRouter = require("./routes/auth");
 app.use(express.static(__dirname + "/public"));
 app.use(express.json());
-app.use(require("cors")());
 app.use("/", authRouter);
 
 app.use(notFound);
