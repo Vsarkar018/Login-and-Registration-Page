@@ -4,13 +4,14 @@ require("express-async-errors");
 const express = require("express");
 const app = express();
 const connectDB = require("./db/connect");
-const authenticateUser = require('./middleware/auth')
+const authenticateUser = require("./middleware/auth");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/error-handler");
 const authRouter = require("./routes/auth");
+app.use(express.static(__dirname + "/public"));
 app.use(express.json());
 app.use(require("cors")());
-app.use("/api/v1/auth", authRouter);
+app.use("/", authRouter);
 
 app.use(notFound);
 app.use(errorHandler);
