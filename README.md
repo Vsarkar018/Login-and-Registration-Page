@@ -2,4 +2,5 @@
 Basic Login and Registration using JWT with MERN
 
 //Deployed
-https://github.com/Vsarkar018/Login-and-Registration-Page.git
+https://login-and-registration-with-mern.onrender.com
+
