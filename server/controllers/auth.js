@@ -3,8 +3,7 @@ const { StatusCodes } = require("http-status-codes");
 const { BadRequest, Unauthorized } = require("../errors");
 
 const register = async (req, res) => {
-  const {email} = req.body;
-  const user = await User.create({ ...req.body,email:email.toLowerCase() });
+  const user = await User.create({ ...req.body });
   const token = user.CreateJwt();
   res.status(StatusCodes.CREATED).send({
     user: {
@@ -15,11 +14,10 @@ const register = async (req, res) => {
 };
 const login = async (req, res) => {
   const { email, password } = req.body;
-  const nemail = email.toLowerCase();
-  if (!nemail || !password) {
+  if (!email || !password) {
     throw new BadRequest("Please Provide email and password");
   }
-  const user = await User.findOne({ nemail });
+  const user = await User.findOne({ email });
   if (!user) {
     throw new Unauthorized("Invalid Credentials");
   }

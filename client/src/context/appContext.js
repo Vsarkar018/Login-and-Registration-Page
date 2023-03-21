@@ -46,7 +46,6 @@ const AppProvider = ({ children }) => {
       );
     } catch (error) {
       const { data, status } = error.response;
-      console.log(data, status);
       dispatch({ type: REGISTER_USER_ERROR, status: status });
     }
   };
@@ -69,7 +68,7 @@ const AppProvider = ({ children }) => {
       );
     } catch (error) {
       const { data, status } = error.response;
-      console.log(data, status);
+      console.log(error.response);
       dispatch({ type: LOGIN_USER_ERROR, status: status });
     }
   };
