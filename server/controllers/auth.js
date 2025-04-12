@@ -19,7 +19,7 @@ const login = async (req, res) => {
   }
   const user = await User.findOne({ email });
   if (!user) {
-    throw new Unauthorized("Invalid Credentials");
+    throw new Unauthorized("Wrong Credentials");
   }
   const isPasswordCorrect = await user.ComparePassword(password);
   if (!isPasswordCorrect) {
